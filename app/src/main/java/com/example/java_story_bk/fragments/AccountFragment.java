@@ -13,23 +13,24 @@ import android.view.ViewGroup;
 
 import com.example.java_story_bk.R;
 
-public class DashboardFragment extends Fragment {
+public class AccountFragment extends Fragment {
+
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Log.e("fragment", "dashboard first load");
+        Log.e("fragment", "AccountFragment first load");
     }
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("fragment", "dashboard reload");
+        Log.e("fragment", "AccountFragment reload");
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        return inflater.inflate(R.layout.fragment_account, container, false);
     }
 }

@@ -6,17 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:id="@+id/wrap_frame_el"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:orientation="vertical"
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2Main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/meowBottomNavigation"
-    >
+        android:layout_above="@id/meowBottomNavigation"
+        >
 
-    </LinearLayout>
+    </androidx.viewpager2.widget.ViewPager2>
+
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:layout_width="match_parent"
         android:id="@+id/meowBottomNavigation"
