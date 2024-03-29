@@ -16,6 +16,7 @@ import android.widget.ScrollView;
 
 import com.example.java_story_bk.MainActivity;
 import com.example.java_story_bk.R;
+import com.example.java_story_bk.adapters.AdapterListVerticalStories;
 import com.example.java_story_bk.adapters.AdapterTopStories;
 import com.example.java_story_bk.models.StatisticUser;
 import com.example.java_story_bk.models.StoryInfo;
@@ -50,11 +51,11 @@ public class DashboardFragment extends Fragment {
                 (data,getContext());
         recyclerViewTop.setAdapter(adapter);
     }
-    private AdapterTopStories setRecyclerViewShowVertical (ArrayList<StoryInfo> data, RecyclerView recyclerViewTop) {
+    private AdapterListVerticalStories setRecyclerViewShowVertical (ArrayList<StoryInfo> data, RecyclerView recyclerViewTop) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerViewTop.setLayoutManager(linearLayoutManager);
 
-        AdapterTopStories adapter = new AdapterTopStories
+        AdapterListVerticalStories adapter = new AdapterListVerticalStories
                 (data,getContext());
         recyclerViewTop.setAdapter(adapter);
         return adapter;
@@ -77,7 +78,7 @@ public class DashboardFragment extends Fragment {
 
             }
         });
-        AdapterTopStories adapter = setRecyclerViewShowVertical(allStories,recyclerView_list_stories_el);
+        AdapterListVerticalStories adapter = setRecyclerViewShowVertical(allStories,recyclerView_list_stories_el);
 
         listStories.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
@@ -99,7 +100,7 @@ public class DashboardFragment extends Fragment {
             }
         });
     }
-   private void LoadMoreStories (AdapterTopStories adapter) {
+   private void LoadMoreStories (AdapterListVerticalStories adapter) {
        MainServices.storyService.getAllStories(page,limit, "").enqueue(new Callback<ArrayList<StoryInfo>>() {
            @Override
            public void onResponse(Call<ArrayList<StoryInfo>> call, Response<ArrayList<StoryInfo>> response) {
