@@ -15,9 +15,16 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.java_story_bk.adapters.Viewpager2AdapterMain;
+import com.example.java_story_bk.models.StatisticUser;
+import com.example.java_story_bk.retrofit.RetrofitClientInstance;
+import com.example.java_story_bk.retrofit.api.StoryServices;
+import com.example.java_story_bk.services.MainServices;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     final int dashboard =1;
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
 
         mViewPager2 = findViewById(R.id.viewPager2Main);
         Viewpager2AdapterMain viewpager2AdapterMain = new Viewpager2AdapterMain(this);

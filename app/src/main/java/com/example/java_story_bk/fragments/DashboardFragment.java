@@ -11,9 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.java_story_bk.MainActivity;
 import com.example.java_story_bk.R;
+import com.example.java_story_bk.models.StatisticUser;
+import com.example.java_story_bk.services.MainServices;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardFragment extends Fragment {
+    StatisticUser statisticUser;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -23,7 +31,23 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("fragment", "dashboard reload");
+       MainServices.storyService.getStatisticsOfUser().enqueue(new Callback<StatisticUser>() {
+            @Override
+            public void onResponse(Call<StatisticUser> call, Response<StatisticUser> response) {
+                statisticUser = response.body();
+                System.out.println("===>");
+
+                System.out.println(statisticUser.getStory_top_ten_followers().size());
+                System.out.println(statisticUser.getStory_top_ten_of_week().size());
+                System.out.println(statisticUser.getStory_top_ten_money().size());
+
+            }
+
+            @Override
+            public void onFailure(Call<StatisticUser> call, Throwable t) {
+
+            }
+        });
 
     }
     @Override
