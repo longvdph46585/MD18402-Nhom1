@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AppStoryDuAn1"
-include(":app")
- 
+rootProject.name = "java_story_bk"
+include ':app'
