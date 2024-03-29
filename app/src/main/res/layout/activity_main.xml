@@ -6,7 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:id="@+id/wrap_frame_el"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/meowBottomNavigation"
+    >
 
+    </LinearLayout>
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:layout_width="match_parent"
         android:id="@+id/meowBottomNavigation"
@@ -16,12 +26,11 @@
         app:mbn_countBackgroundColor="#ff6f00"
         android:layout_alignParentBottom="true"
         app:mbn_countTextColor="#ffffff"
-        app:mbn_countTypeface="fonts/SourceSansPro-Regular.ttf"
         app:mbn_defaultIconColor="#90a4ae"
         app:mbn_rippleColor="#2f424242"
         app:mbn_selectedIconColor="#3c415e"
         app:mbn_shadowColor="#1f212121"
-        app:mbn_hasAnimation="true"
         />
+    <!--        app:mbn_hasAnimation="true"-->
 
 </RelativeLayout>
