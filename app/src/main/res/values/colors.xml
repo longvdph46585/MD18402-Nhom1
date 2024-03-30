@@ -5,4 +5,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="silver_text">#c0c0c0</color>
+    <color name="signature">#1f6188</color>
 </resources>

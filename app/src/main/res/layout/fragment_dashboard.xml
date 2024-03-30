@@ -83,10 +83,11 @@
             android:textStyle="bold"
             android:textSize="18dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="17dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Danh sách truyện"
+
             />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_list_stories_el"
