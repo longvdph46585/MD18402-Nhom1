@@ -1,7 +1,6 @@
 package com.example.java_story_bk;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,22 +8,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.java_story_bk.adapters.Viewpager2AdapterMain;
-import com.example.java_story_bk.models.StatisticUser;
-import com.example.java_story_bk.retrofit.RetrofitClientInstance;
-import com.example.java_story_bk.retrofit.api.StoryServices;
-import com.example.java_story_bk.services.MainServices;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     final int dashboard =1;

@@ -1,6 +1,7 @@
 package com.example.java_story_bk.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.example.java_story_bk.MainActivity;
@@ -20,6 +22,7 @@ import com.example.java_story_bk.adapters.AdapterListVerticalStories;
 import com.example.java_story_bk.adapters.AdapterTopStories;
 import com.example.java_story_bk.models.StatisticUser;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.screens.SearchScreenActivity;
 import com.example.java_story_bk.services.MainServices;
 
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ import retrofit2.Response;
 public class DashboardFragment extends Fragment {
     StatisticUser statisticUser;
     RecyclerView recyclerViewTopOfWeek;
+    ImageView search_ic_header_dashboard;
     RecyclerView recyclerview_topStoriesOfFollow;
     RecyclerView recyclerview_topStoriesOfDonate;
     RecyclerView recyclerView_list_stories_el;
@@ -127,6 +131,18 @@ public class DashboardFragment extends Fragment {
         recyclerview_topStoriesOfDonate = view.findViewById(R.id.recyclerview_topStoriesOfDonate);
         recyclerView_list_stories_el = view.findViewById(R.id.recyclerView_list_stories_el);
         listStories = view.findViewById(R.id.scrollViewDashboard);
+        search_ic_header_dashboard = view.findViewById(R.id.search_ic_header_dashboard);
+        search_ic_header_dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchScreenActivity.class);
+
+                // Optional: Truyền dữ liệu qua Intent nếu cần
+
+                // Khởi động Activity mới bằng phương thức startActivity()
+                startActivity(intent);
+            }
+        });
 
         return  view;
     }
