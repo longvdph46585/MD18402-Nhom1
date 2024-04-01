@@ -4,104 +4,171 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".screens.StoryInfoScreen">
+
     <ScrollView
-     android:layout_height="match_parent" android:layout_width="fill_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <RelativeLayout
-    android:layout_width="match_parent"
-    android:id="@+id/RelativeLayoutWrapStoryInfoStory"
-
-    android:layout_height="300dp">
-    <RelativeLayout
-        android:id="@+id/storyInfoHeaderTop"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow_back"
-            />
-
-        <ImageView
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="0dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/add_icon_incre"
-            />
-    </RelativeLayout>
-   <LinearLayout
-        android:paddingLeft="30dp"
-       android:paddingRight="30dp"
-       android:layout_below="@+id/storyInfoHeaderTop"
-       android:layout_width="match_parent"
-       android:gravity="center"
-       android:layout_height="match_parent" >
-<ImageView
-    android:layout_width="129dp"
-    android:layout_height="192dp">
-
-</ImageView>
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-           android:layout_marginTop="20dp"
-           android:layout_marginBottom="20dp"
-           android:padding="10dp"
-           android:orientation="vertical"
-           >
-
-           <TextView
-               android:id="@+id/nameStoryInfo_el"
-               android:layout_width="wrap_content"
-               android:text="12312"
-               android:textSize="18dp"
-                android:textStyle="bold"
-               android:layout_height="wrap_content">
-
-           </TextView>
-           <TextView
-               android:layout_below="@+id/nameStoryInfo_el"
-               android:textSize="15dp"
-               android:textStyle="bold"
-               android:text="12312"
-               android:layout_marginTop="5dp"
-
-               android:textColor="@color/silver_text"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
-
-           </TextView>
-
-           <Button
-               android:layout_width="wrap_content"
-               android:layout_height="36dp"
-               android:text="Đọc"
-               android:layout_alignParentBottom="true"
-               android:background="@drawable/button"
-               android:backgroundTint="@color/black"
-               android:layout_centerHorizontal="true" >
-
-           </Button>
-       </RelativeLayout>
-
-   </LinearLayout>
-
-</RelativeLayout>
-            <LinearLayout
-                android:background="@color/black"
+                android:id="@+id/RelativeLayoutWrapStoryInfoStory"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-            </LinearLayout>
+                android:layout_height="300dp">
+
+                <RelativeLayout
+                    android:id="@+id/storyInfoHeaderTop"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="50dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:id="@+id/storyInfoHeaderTop_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/arrow_back" />
+
+                    <ImageView
+                        android:id="@+id/storyInfoHeaderTop_add"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="0dp"
+                        android:src="@drawable/add_icon_incre" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/storyInfoHeaderTop"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/storyInfo_image"
+                        android:layout_width="129dp"
+                        android:layout_height="192dp">
+
+                    </ImageView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/storyInfo_name"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tên truyện"
+                            android:textSize="18dp"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/storyInfo_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/storyInfo_name"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Tác giả:"
+                            android:textColor="@color/silver_text"
+                            android:textSize="15dp"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/daft_theloaiLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/storyInfo_author"
+                            android:text="Thể loại:">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/storyInfo_genres"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/daft_theloaiLabel"
+
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/button"
+                            android:text="Đọc">
+
+                        </Button>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_storyInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Giới thiệu"
+                        ></com.google.android.material.tabs.TabItem>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh giá"
+                        ></com.google.android.material.tabs.TabItem>
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bình luận"
+                        ></com.google.android.material.tabs.TabItem>
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chương"
+                        ></com.google.android.material.tabs.TabItem>
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPer2StoryInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tab_layout_storyInfo"/>
+            </RelativeLayout>
         </LinearLayout>
 
     </ScrollView>

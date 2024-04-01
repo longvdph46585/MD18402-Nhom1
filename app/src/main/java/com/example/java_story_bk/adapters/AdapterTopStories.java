@@ -4,6 +4,7 @@ package com.example.java_story_bk.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.screens.StoryInfoScreen;
 
 import java.util.ArrayList;
 
@@ -47,6 +49,14 @@ public class AdapterTopStories extends RecyclerView.Adapter<AdapterTopStories.Vi
                 .into(holder.imageStory);
         holder.nameStory_el.setText(currentStory.getStory_name());
         holder.genre_el.setText(currentStory.getStory_genre().split(",")[0]);
+        holder.wrapItemStoryTop_el.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, StoryInfoScreen.class);
+                intent.putExtra("story_info",currentStory );
+               context.startActivity(intent);
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

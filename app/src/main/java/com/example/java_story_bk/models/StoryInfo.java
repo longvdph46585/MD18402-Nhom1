@@ -4,7 +4,9 @@ package com.example.java_story_bk.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class StoryInfo {
+import java.io.Serializable;
+
+public class StoryInfo implements Serializable {
     private String _id;
 
     public void set_id(String _id) {
