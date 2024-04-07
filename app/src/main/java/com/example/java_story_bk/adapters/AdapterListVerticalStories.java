@@ -2,6 +2,7 @@ package com.example.java_story_bk.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.screens.StoryInfoScreen;
 
 import java.util.ArrayList;
 
@@ -45,6 +47,14 @@ public class AdapterListVerticalStories extends RecyclerView.Adapter<AdapterList
                 .into(holder.imageStory);
 
         holder.linearLayoutWrapItemVertical_name.setText(currentStory.getStory_name());
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, StoryInfoScreen.class);
+                intent.putExtra("story_info",currentStory );
+                context.startActivity(intent);
+            }
+        });
         holder.linearLayoutWrapItemVertical_author.setText(currentStory.getAuhtor_name());
         holder.linearLayoutWrapItemVertical_genres.setText("Thể loại: " +currentStory.getStory_genre());
         holder.linearLayoutWrapItemVertical_countRead.setText("Lượt theo dõi: " +currentStory.getCount_followers_story());

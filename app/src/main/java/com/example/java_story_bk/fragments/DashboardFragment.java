@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-import com.example.java_story_bk.MainActivity;
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.adapters.AdapterListVerticalStories;
 import com.example.java_story_bk.adapters.AdapterTopStories;
 import com.example.java_story_bk.models.StatisticUser;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.retrofit.RetrofitClientInstance;
+import com.example.java_story_bk.retrofit.api.StoryServices;
 import com.example.java_story_bk.screens.SearchScreenActivity;
-import com.example.java_story_bk.services.MainServices;
 
 import java.util.ArrayList;
 
@@ -67,7 +67,7 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-       MainServices.storyService.getStatisticsOfUser().enqueue(new Callback<StatisticUser>() {
+        RetrofitClientInstance.getInstance().create(StoryServices.class).getStatisticsOfUser().enqueue(new Callback<StatisticUser>() {
             @Override
             public void onResponse(Call<StatisticUser> call, Response<StatisticUser> response) {
                 statisticUser = response.body();
@@ -79,7 +79,7 @@ public class DashboardFragment extends Fragment {
 
             @Override
             public void onFailure(Call<StatisticUser> call, Throwable t) {
-
+                System.out.println(t);
             }
         });
         AdapterListVerticalStories adapter = setRecyclerViewShowVertical(allStories,recyclerView_list_stories_el);
@@ -105,7 +105,7 @@ public class DashboardFragment extends Fragment {
         });
     }
    private void LoadMoreStories (AdapterListVerticalStories adapter) {
-       MainServices.storyService.getAllStories(page,limit, "").enqueue(new Callback<ArrayList<StoryInfo>>() {
+       RetrofitClientInstance.getInstance().create(StoryServices.class).getAllStories(page,limit, "").enqueue(new Callback<ArrayList<StoryInfo>>() {
            @Override
            public void onResponse(Call<ArrayList<StoryInfo>> call, Response<ArrayList<StoryInfo>> response) {
 
@@ -116,6 +116,7 @@ public class DashboardFragment extends Fragment {
 
            @Override
            public void onFailure(Call<ArrayList<StoryInfo>> call, Throwable t) {
+               System.out.println(t);
 
            }
        });

@@ -1,10 +1,13 @@
 package com.example.java_story_bk.screens;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,8 @@ import com.bumptech.glide.Glide;
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.adapters.ViewPager2AdapterStoryInfo;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.services.ReadingService;
+import com.example.java_story_bk.untils.Helpers;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.ViewPagerOnTabSelectedListener;
@@ -25,6 +30,7 @@ public class StoryInfoScreen extends AppCompatActivity {
     StoryInfo storyInfo;
     private ViewPager2 mViewPager2;
     private TabLayout tab_layout_storyInfo;
+    private ScrollView scrollWrapperStoryInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,7 @@ public class StoryInfoScreen extends AppCompatActivity {
         tab_layout_storyInfo = findViewById(R.id.tab_layout_storyInfo);
 
         initDataFirstScreen();
+        initReadingHistory();
     }
     private  void initDataFirstScreen () {
         Intent intent = getIntent();
@@ -101,5 +108,20 @@ public class StoryInfoScreen extends AppCompatActivity {
             }
 
         });
+    }
+    private void initReadingHistory () {
+        SharedPreferences READING_CURRENT = getSharedPreferences("READING_CURRENT", MODE_PRIVATE);
+
+//
+        if(READING_CURRENT.getString ("story_id","").equals(storyInfo.get_id())) {
+
+
+        } else {
+            ReadingService readingHistoryService =  new ReadingService(this);
+            readingHistoryService.insertReadingHistory(storyInfo.get_id(),this);
+        }
+        READING_CURRENT.edit().putString("story_id", storyInfo.get_id()).apply();
+
+
     }
 }

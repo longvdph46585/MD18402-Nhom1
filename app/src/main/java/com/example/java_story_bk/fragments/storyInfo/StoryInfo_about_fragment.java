@@ -7,17 +7,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.models.StoryInfo;
 
 
 public class StoryInfo_about_fragment extends Fragment {
-
     private StoryInfo storyInfo;
-    public StoryInfo_about_fragment (StoryInfo storyInfo) {
+    public StoryInfo_about_fragment (StoryInfo storyInfo ) {
         this.storyInfo= storyInfo;
+
     }
     TextView storyInfo_about_countFollowers, storyInfo_about_countChapters, storyInfo_about_countViews, storyInfo_about_quickReview;
 

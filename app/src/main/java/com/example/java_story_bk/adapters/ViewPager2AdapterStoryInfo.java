@@ -1,5 +1,9 @@
 package com.example.java_story_bk.adapters;
 
+import android.view.View;
+import android.widget.ScrollView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -16,8 +20,7 @@ import com.example.java_story_bk.models.StoryInfo;
 public class ViewPager2AdapterStoryInfo extends FragmentStateAdapter {
     private StoryInfo storyInfo;
 
-
-    public ViewPager2AdapterStoryInfo(@NonNull FragmentActivity fragmentActivity, StoryInfo storyInfo) {
+    public ViewPager2AdapterStoryInfo(@NonNull FragmentActivity fragmentActivity, StoryInfo storyInfo ) {
         super(fragmentActivity);
         this.storyInfo  =storyInfo;
 
@@ -29,9 +32,9 @@ public class ViewPager2AdapterStoryInfo extends FragmentStateAdapter {
         switch (position) {
             case 0: return  new StoryInfo_about_fragment(storyInfo);
 
-            case 1: return  new StoryInfo_reviews_fragment();
-            case 2: return  new StoryInfo_comments_fragment();
-            case 3: return  new StoryInfo_chapters_fragment();
+            case 1: return  new StoryInfo_reviews_fragment(storyInfo);
+            case 2: return  new StoryInfo_comments_fragment(storyInfo);
+            case 3: return  new StoryInfo_chapters_fragment(storyInfo);
 
             //            case 1: return  new LoveStoriesFragment();
 //
@@ -40,7 +43,7 @@ public class ViewPager2AdapterStoryInfo extends FragmentStateAdapter {
 //            case 3: return  new AccountFragment();
 
             default:
-                return new StoryInfo_about_fragment(storyInfo);
+                return  new StoryInfo_about_fragment(storyInfo);
         }
     }
 

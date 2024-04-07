@@ -53,7 +53,6 @@ public class SearchScreenActivity extends AppCompatActivity {
         iConClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("zooo123123");
                 page = 0;
                 dataList.clear();
                 LoadMoreStories(adapter);
@@ -79,16 +78,16 @@ public class SearchScreenActivity extends AppCompatActivity {
 
                 dataList.addAll(response.body()) ;
                 adapter.notifyDataSetChanged();
-                System.out.println("he2h");
+                page++;
 
             }
 
             @Override
             public void onFailure(Call<ArrayList<StoryInfo>> call, Throwable t) {
+                System.out.println(t.toString());
 System.out.println("heh");
             }
         });
-        this.page++;
     }
     private AdapterListVerticalStories setRecyclerViewShowVertical (ArrayList<StoryInfo> data, RecyclerView recyclerViewTop) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchScreenActivity.this,LinearLayoutManager.VERTICAL, false);
