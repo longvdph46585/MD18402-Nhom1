@@ -20,4 +20,5 @@ public class AccountService {
 
         return account.contains("email");
     }
+
 }

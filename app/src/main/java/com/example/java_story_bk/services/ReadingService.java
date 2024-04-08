@@ -1,14 +1,15 @@
 package com.example.java_story_bk.services;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.java_story_bk.DB.DbHelper;
-import com.example.java_story_bk.models.ReadingHistoryLocal;
+import com.example.java_story_bk.models.ReadingInfoOfUser;
 import com.example.java_story_bk.models.StoryInfo;
 import com.example.java_story_bk.models.bodyModel.SendListStoriesIdBody;
+import com.example.java_story_bk.models.bodyModel.SendReadingInfoOfUser;
+import com.example.java_story_bk.untils.Helpers;
 
 import java.util.ArrayList;
 
@@ -27,70 +28,53 @@ public class ReadingService {
         accountService = new AccountService(context);
     }
 
-    public long insertReadingHistory(String story_id, Context context) {
-        ContentValues values = new ContentValues();
 
-        values.put("story_id", story_id);
-        db.delete(DbHelper.TB_reading, "story_id=?",new String[]{story_id});
-        return db.insert(DbHelper.TB_reading, null, values);
+    public void addReadingInfoForUser(Context ctx, StoryInfo storyInfo, String chapter_id) {
+        //check
+        final ReadingInfoOfUser dataSend = new ReadingInfoOfUser(storyInfo.get_id(), Helpers.getDeviceUUID(ctx), chapter_id, "");
+        final SendReadingInfoOfUser bodySend = new SendReadingInfoOfUser(dataSend);
+        MainServices.storyService.addReadingInfoOfUser(bodySend).enqueue(new Callback<ReadingInfoOfUser>() {
+            @Override
+            public void onResponse(Call<ReadingInfoOfUser> call, Response<ReadingInfoOfUser> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ReadingInfoOfUser> call, Throwable t) {
+
+            }
+        });
+
+
     }
 
-    public void getAllReading(int page, int limit,callBackGetStoriesReadHistory callback) {
-        ArrayList<ReadingHistoryLocal> listReadingHistoryLocal = new ArrayList<>();
+
+    public void getAllReading(String device_uuid,int page, int limit, callBackGetStoriesReadHistory callback) {
         ArrayList<StoryInfo> listData = new ArrayList<>();
 
-        int offset = page * limit;
-        System.out.println(offset);
+        Call<ArrayList<StoryInfo>> call = MainServices.storyService.getReadingHistoryForBooks(device_uuid, page,limit
+        );
+        call.enqueue(new Callback<ArrayList<StoryInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<StoryInfo>> call, Response<ArrayList<StoryInfo>> response) {
+                    System.out.println(response.body());
+                listData.addAll(response.body());
+                callback.onComplete(listData);
 
-        String query = String.format("SELECT * FROM %s ORDER BY %s DESC LIMIT %d OFFSET %d",
-                DbHelper.TB_reading, "create_at", limit, offset);
-
-        Cursor cursor = db.rawQuery(query, null);
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            do {
-                ReadingHistoryLocal reading = new ReadingHistoryLocal();
-                reading.setStory_id(cursor.getString(0));
-                reading.setCreate_at(cursor.getString(1));
-                listReadingHistoryLocal.add(reading);
-            }
-            while (cursor.moveToNext());
-        }
-        // kiểm tra xem có data nào dưới local không
-
-        if (!listReadingHistoryLocal.isEmpty()) {
-            // nếu như có, thì lấy data đó, get truyện
-            ArrayList<String> listId = new ArrayList<>();
-            for (ReadingHistoryLocal localStoryId : listReadingHistoryLocal) {
-                listId.add(localStoryId.getStory_id());
             }
 
-            Call<ArrayList<StoryInfo>> call = MainServices.storyService.getListStoriesFromId(new SendListStoriesIdBody(listId));
-            call.enqueue(new Callback<ArrayList<StoryInfo>>() {
-                @Override
-                public void onResponse(Call<ArrayList<StoryInfo>> call, Response<ArrayList<StoryInfo>> response) {
-                    listData.addAll(response.body());
-                    callback.onComplete(listData);
-
-                }
-
-                @Override
-                public void onFailure(Call<ArrayList<StoryInfo>> call, Throwable t) {
-                    System.out.println("zoo");
-                }
-            });
-        } else {
-
-            // logic get phía server
-        }
-
+            @Override
+            public void onFailure(Call<ArrayList<StoryInfo>> call, Throwable t) {
+                System.out.println("zoo");
+            }
+        });
 
 
     }
-    public interface callBackGetStoriesReadHistory{
-         void onComplete(ArrayList<StoryInfo> listData);
-    }
 
+    public interface callBackGetStoriesReadHistory {
+        void onComplete(ArrayList<StoryInfo> listData);
+    }
 
 
 }

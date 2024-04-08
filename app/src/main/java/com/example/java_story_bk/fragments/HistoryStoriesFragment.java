@@ -15,18 +15,12 @@ import android.view.ViewGroup;
 
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.adapters.AdapterListVerticalStories;
-import com.example.java_story_bk.models.ReadingHistoryLocal;
 import com.example.java_story_bk.models.StoryInfo;
-import com.example.java_story_bk.screens.SearchScreenActivity;
 import com.example.java_story_bk.services.AccountService;
-import com.example.java_story_bk.services.MainServices;
 import com.example.java_story_bk.services.ReadingService;
+import com.example.java_story_bk.untils.Helpers;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class HistoryStoriesFragment extends Fragment {
@@ -60,7 +54,7 @@ public class HistoryStoriesFragment extends Fragment {
     private void getData() {
         //check
 
-        readingService.getAllReading(page, limit, callBackDoneGetStories);
+        readingService.getAllReading(Helpers.getDeviceUUID(getContext()),page, limit, callBackDoneGetStories);
 
     }
 

@@ -19,7 +19,7 @@
             android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Reading histories" />
+            android:text="Lịch sử đọc" />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_below="@+id/titleFragmentHistories"
             android:id="@+id/listItemHistories"

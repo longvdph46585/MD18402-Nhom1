@@ -16,23 +16,24 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.java_story_bk.R;
-import com.example.java_story_bk.models.Chapter;
 import com.example.java_story_bk.models.ChapterInfo;
 import com.example.java_story_bk.models.StoryInfo;
 import com.example.java_story_bk.services.MainServices;
+import com.example.java_story_bk.services.ReadingService;
 import com.example.java_story_bk.untils.Helpers;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ReadChapteInStory extends AppCompatActivity {
+public class ReadChapterInStory extends AppCompatActivity {
     private TextView chapterName;
     Button prevBtn, nextBtn;
     ChapterInfo chapterInfo;
     ScrollView scrollViewChapter;
     WebView webviewReadChapter;
     StoryInfo storyInfo;
+    ReadingService readingService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class ReadChapteInStory extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        readingService= new ReadingService( this);
         prevBtn = findViewById(R.id.prevChapterBtn);
         chapterName = findViewById(R.id.chapterName);
         nextBtn = findViewById(R.id.nextChapterBtn);
@@ -111,13 +113,18 @@ public class ReadChapteInStory extends AppCompatActivity {
     }
 
     private void handleUpdateChapter(ChapterInfo chapterInfo) {
-        scrollViewChapter.scrollTo(0, 0);
+        // update On database
+        System.out.println("update");
+        readingService.addReadingInfoForUser(this,storyInfo,chapterInfo.get_id());
+
 
         handelUpdateVisibleButton(chapterInfo.getIndex(), (storyInfo.getCount_chapters()));
 
         this.chapterInfo = chapterInfo;
         chapterName.setText(chapterInfo.getChapter_name());
         webviewReadChapter.loadData(Helpers.WrapHtmlContent(chapterInfo.getContent_chapter()), "text/html", "UTF-8");
+        scrollViewChapter.smoothScrollTo(0,0);
+
     }
 
     private void handelUpdateVisibleButton(int index, int totalChapter) {

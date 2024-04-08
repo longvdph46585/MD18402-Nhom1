@@ -46,7 +46,7 @@ public class StoryInfoScreen extends AppCompatActivity {
         tab_layout_storyInfo = findViewById(R.id.tab_layout_storyInfo);
 
         initDataFirstScreen();
-        initReadingHistory();
+//        initReadingHistory();
     }
     private  void initDataFirstScreen () {
         Intent intent = getIntent();
@@ -110,28 +110,5 @@ public class StoryInfoScreen extends AppCompatActivity {
 
         });
     }
-    private void initReadingHistory () {
-        SharedPreferences READING_CURRENT =  this.getSharedPreferences("READING_CURRENT", MODE_PRIVATE);
 
-//
-        if(READING_CURRENT.getString ("story_id","").equals(storyInfo.get_id())) {
-
-
-        } else  {
-            AccountService accountService = new AccountService(this);
-            if(accountService.checkLoginAccount()) {
-                // update in server
-
-            } else {
-                // update in local
-                ReadingService readingHistoryService =  new ReadingService(this);
-                readingHistoryService.insertReadingHistory(storyInfo.get_id(),this);
-
-            }
-
-        }
-        READING_CURRENT.edit().putString("story_id", storyInfo.get_id()).apply();
-
-
-    }
 }

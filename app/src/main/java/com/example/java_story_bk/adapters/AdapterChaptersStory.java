@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.models.Chapter;
 import com.example.java_story_bk.models.StoryInfo;
-import com.example.java_story_bk.screens.ReadChapteInStory;
+import com.example.java_story_bk.screens.ReadChapterInStory;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class AdapterChaptersStory extends RecyclerView.Adapter<AdapterChaptersSt
 holder.layoutWrapItemChapter.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(context, ReadChapteInStory.class);
+        Intent intent = new Intent(context, ReadChapterInStory.class);
         intent.putExtra("id_chapter", currentChapter.get_id()); // Dữ liệu cần truyền
         intent.putExtra("story_info",storyInfo );
         context.startActivity(intent);

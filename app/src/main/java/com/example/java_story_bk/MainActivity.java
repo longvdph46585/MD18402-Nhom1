@@ -16,7 +16,6 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.java_story_bk.adapters.Viewpager2AdapterMain;
-import com.example.java_story_bk.services.ReadingService;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

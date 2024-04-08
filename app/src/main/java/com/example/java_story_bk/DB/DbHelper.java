@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "Story";
-    private static final int DB_VERSION = 1001;
+    private static final int DB_VERSION = 1002;
     public static final String TB_reading = "ReadingStory";
 
 
@@ -25,18 +25,20 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        create table
-        String createReadingTB = "CREATE TABLE " + TB_reading + "(" +
-                "story_id     TEXT NOT NULL ," +
-                "create_at" + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+//        String createReadingTB = "CREATE TABLE " + TB_reading + "(" +
+//                "user_id     TEXT ," +
+//                "device_uuid TEXT NOT NULL ," +
+//                "story_id     TEXT NOT NULL ," +
+//                "chapter_id     TEXT NOT NULL ," +
+//
+//                "create_at" + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
 
-        db.execSQL(createReadingTB);
+//        db.execSQL(createReadingTB);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if( oldVersion != newVersion) {
-            System.out.println("checkkk");
             String dropTblProd = "DROP TABLE IF EXISTS " + TB_reading;
             db.execSQL(dropTblProd);
             onCreate(db);
