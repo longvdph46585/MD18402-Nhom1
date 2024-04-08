@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "Story";
-    private static final int DB_VERSION = 1000;
+    private static final int DB_VERSION = 1001;
     public static final String TB_reading = "ReadingStory";
 
 

@@ -39,14 +39,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
-        if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-            Toast.makeText(this, "connect mạng di động", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "connect mạng khác", Toast.LENGTH_SHORT).show();
 
-        }
 
         mViewPager2 = findViewById(R.id.viewPager2Main);
         Viewpager2AdapterMain viewpager2AdapterMain = new Viewpager2AdapterMain(this);

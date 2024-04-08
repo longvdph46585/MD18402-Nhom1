@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.adapters.ViewPager2AdapterStoryInfo;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.services.AccountService;
 import com.example.java_story_bk.services.ReadingService;
 import com.example.java_story_bk.untils.Helpers;
 import com.google.android.material.tabs.TabItem;
@@ -110,15 +111,24 @@ public class StoryInfoScreen extends AppCompatActivity {
         });
     }
     private void initReadingHistory () {
-        SharedPreferences READING_CURRENT = getSharedPreferences("READING_CURRENT", MODE_PRIVATE);
+        SharedPreferences READING_CURRENT =  this.getSharedPreferences("READING_CURRENT", MODE_PRIVATE);
 
 //
         if(READING_CURRENT.getString ("story_id","").equals(storyInfo.get_id())) {
 
 
-        } else {
-            ReadingService readingHistoryService =  new ReadingService(this);
-            readingHistoryService.insertReadingHistory(storyInfo.get_id(),this);
+        } else  {
+            AccountService accountService = new AccountService(this);
+            if(accountService.checkLoginAccount()) {
+                // update in server
+
+            } else {
+                // update in local
+                ReadingService readingHistoryService =  new ReadingService(this);
+                readingHistoryService.insertReadingHistory(storyInfo.get_id(),this);
+
+            }
+
         }
         READING_CURRENT.edit().putString("story_id", storyInfo.get_id()).apply();
 

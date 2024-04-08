@@ -1,10 +1,10 @@
 package com.example.java_story_bk.models;
 
-public class ReadingHistory {
+public class ReadingHistoryLocal {
 
      private   String create_at;
 
-    public ReadingHistory() {
+    public ReadingHistoryLocal() {
     }
 
     public void setCreate_at(String create_at) {
