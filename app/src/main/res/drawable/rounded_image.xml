@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="100dp"/> <!-- Giá trị bán kính sẽ xác định độ cong của góc, điều chỉnh theo nhu cầu -->
+    <solid android:color="@android:color/transparent"/> <!-- Để tránh việc hiển thị màu nền đơn, sử dụng màu trong suốt -->
+</shape>

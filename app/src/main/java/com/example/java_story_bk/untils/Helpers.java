@@ -3,6 +3,7 @@ package com.example.java_story_bk.untils;
 
 import android.content.Context;
 import android.provider.Settings;
+import android.util.Patterns;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public  abstract class Helpers {
     static public String WrapHtmlContent (String content) {
@@ -72,4 +75,10 @@ public  abstract class Helpers {
             return "";
         }
     }
+
+
+    public static boolean isValidEmail(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
 }

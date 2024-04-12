@@ -40,12 +40,10 @@ public class HistoryStoriesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("fragment", "HistoryStoriesFragment reload");
         page = 0;
         limit = 15;
         listReadingStories.clear();
         adapter.notifyDataSetChanged();
-        System.out.println(listReadingStories.size() + " size");
         getData();
 
 

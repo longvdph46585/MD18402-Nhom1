@@ -14,15 +14,17 @@ import com.example.java_story_bk.fragments.storyInfo.StoryInfo_about_fragment;
 import com.example.java_story_bk.fragments.storyInfo.StoryInfo_chapters_fragment;
 import com.example.java_story_bk.fragments.storyInfo.StoryInfo_comments_fragment;
 import com.example.java_story_bk.fragments.storyInfo.StoryInfo_reviews_fragment;
+import com.example.java_story_bk.models.ChapterInfo;
 import com.example.java_story_bk.models.StoryInfo;
 
 
 public class ViewPager2AdapterStoryInfo extends FragmentStateAdapter {
     private StoryInfo storyInfo;
-
-    public ViewPager2AdapterStoryInfo(@NonNull FragmentActivity fragmentActivity, StoryInfo storyInfo ) {
+    private ChapterInfo currentChapter;
+    public ViewPager2AdapterStoryInfo(@NonNull FragmentActivity fragmentActivity, StoryInfo storyInfo , ChapterInfo currentChapter) {
         super(fragmentActivity);
         this.storyInfo  =storyInfo;
+        this.currentChapter=currentChapter;
 
     }
 
@@ -34,7 +36,7 @@ public class ViewPager2AdapterStoryInfo extends FragmentStateAdapter {
 
             case 1: return  new StoryInfo_reviews_fragment(storyInfo);
             case 2: return  new StoryInfo_comments_fragment(storyInfo);
-            case 3: return  new StoryInfo_chapters_fragment(storyInfo);
+            case 3: return  new StoryInfo_chapters_fragment(storyInfo,currentChapter);
 
             //            case 1: return  new LoveStoriesFragment();
 //

@@ -41,7 +41,7 @@ public class AdapterChaptersStory extends RecyclerView.Adapter<AdapterChaptersSt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Chapter currentChapter = dataList.get(position);
-        holder.text_index_chapter.setText(currentChapter.getIndex() + "");
+//        holder.text_index_chapter.setText(currentChapter.getIndex() + "");
         holder.text_name_chapter.setText(currentChapter.getChapter_name() + "");
 holder.layoutWrapItemChapter.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -70,7 +70,7 @@ holder.layoutWrapItemChapter.setOnClickListener(new View.OnClickListener() {
             super(itemView);
 
 
-            text_index_chapter = itemView.findViewById(R.id.text_index_chapter);
+//            text_index_chapter = itemView.findViewById(R.id.text_index_chapter);
             text_name_chapter = itemView.findViewById(R.id.text_name_chapter);
             layoutWrapItemChapter = itemView.findViewById(R.id.layoutWrapItemChapter);
         }

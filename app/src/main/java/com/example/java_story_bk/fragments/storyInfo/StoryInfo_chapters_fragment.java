@@ -1,5 +1,6 @@
 package com.example.java_story_bk.fragments.storyInfo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.adapters.AdapterChaptersStory;
 import com.example.java_story_bk.models.Chapter;
+import com.example.java_story_bk.models.ChapterInfo;
 import com.example.java_story_bk.models.StoryInfo;
 import com.example.java_story_bk.services.MainServices;
 
@@ -27,16 +30,20 @@ public class StoryInfo_chapters_fragment extends Fragment {
     StoryInfo storyInfo;
     ArrayList<Chapter> dataList = new ArrayList<>();
     RecyclerView recyclerView;
+    TextView readContinueChapterFragmentLabel,readContinueChapterFragment;
+    private ChapterInfo currentChapter;
 
     int limit = 20;
     int page = 0;
     AdapterChaptersStory adapter;
 
-    public StoryInfo_chapters_fragment(StoryInfo storyInfo) {
+    public StoryInfo_chapters_fragment(StoryInfo storyInfo, ChapterInfo currentChapter) {
 
         this.storyInfo =storyInfo;
+        this.currentChapter= currentChapter;
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +52,14 @@ public class StoryInfo_chapters_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_story_info_chapters_fragment, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewChapter);
 
+        readContinueChapterFragmentLabel = view.findViewById(R.id.readContinueChapterFragmentLabel);
+        readContinueChapterFragment = view.findViewById(R.id.readContinueChapterFragment);
+        if(currentChapter != null) {
+            readContinueChapterFragmentLabel.setVisibility(View.VISIBLE);
+            readContinueChapterFragment.setText(currentChapter.getChapter_name());
+        } else {
+
+        }
         initRecyclerView();
 
         return view;

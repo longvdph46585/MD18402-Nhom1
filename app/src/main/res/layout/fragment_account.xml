@@ -5,10 +5,128 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AccountFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/wrapUserInfoFragment_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="accoutn fragment" />
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/wrapUserInfoFragment_login_mean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Vui lòng đăng nhập để sử dụng tính năng này"
+            android:textSize="20dp"></TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/loginInFragmentAccount"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wrapUserInfoFragment_login_mean"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:foregroundGravity="center"
+            android:text="Đăng nhập ngay">
+
+        </Button>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/wrapUserInfoFragment"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/bk_icon_rounded"></ImageView>
+
+            <TextView
+                android:id="@+id/wrapUserInfoFragment_lvl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Luyện khí: tầng 1"
+                android:textSize="20dp"
+                android:textStyle="italic"></TextView>
+
+            <TextView
+                android:id="@+id/wrapUserInfoFragment_name"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Đào Công Kha"
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/wrapUserInfoFragment_email"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="asdfasef@gmail.com"
+                android:textSize="20dp"
+                android:textStyle="italic"></TextView>
+
+            <TextView
+                android:id="@+id/wrapUserInfoFragment_money"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:text="Linh thạch: 120"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/wrapUserInfoFragment_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/feed_back"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30dp"
+
+            android:gravity="center"
+
+            android:text="logout"
+
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:id="@+id/feed_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/feed_back"
+            android:textSize="18dp"
+            android:layout_marginBottom="70dp"
+            android:textStyle="italic">
+
+        </TextView>
+    </RelativeLayout>
 
 </FrameLayout>

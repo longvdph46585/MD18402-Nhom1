@@ -16,9 +16,14 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.java_story_bk.adapters.Viewpager2AdapterMain;
+import com.example.java_story_bk.services.AccountService;
+import com.example.java_story_bk.services.MainServices;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     final int dashboard = 1;
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     final int history_read = 3;
     final int account = 4;
     private ViewPager2 mViewPager2;
+    private AccountService accountService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
+        accountService = new AccountService(MainActivity.this);
         mViewPager2 = findViewById(R.id.viewPager2Main);
         Viewpager2AdapterMain viewpager2AdapterMain = new Viewpager2AdapterMain(this);
         mViewPager2.setAdapter(viewpager2AdapterMain);
@@ -55,8 +61,27 @@ public class MainActivity extends AppCompatActivity {
                 handelChangePageController(position + 1, bottomNavigation);
             }
         });
-        bottomNavigation.setCount(follow_stories_page, "9");
-        bottomNavigation.setCount(follow_stories_page, "9");
+        if (accountService.checkLoginAccount()) {
+            MainServices.storyService.getCountNewChapterStories(accountService.getAccountID()).enqueue(new Callback<Integer>() {
+                @Override
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body() > 0) {
+                            bottomNavigation.setCount(follow_stories_page, response.body().toString());
+
+                        }
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
+
+                }
+            });
+        }
+
         bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {

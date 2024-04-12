@@ -31,10 +31,11 @@ public class SearchScreenActivity extends AppCompatActivity {
 
     int page = 5;
     int limit = 5;
-    RecyclerView recyclerView ;
-    ImageView iConClick ;
+    RecyclerView recyclerView;
+    ImageView iConClick;
     EditText inputSearch;
     ArrayList<StoryInfo> dataList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +48,8 @@ public class SearchScreenActivity extends AppCompatActivity {
         });
         inputSearch = findViewById(R.id.headerSearch_inputSearch);
         iConClick = findViewById(R.id.headerSearch_searchIcon);
-        recyclerView =  findViewById(R.id.recyclerViewSearch);
-        AdapterListVerticalStories adapter =setRecyclerViewShowVertical(dataList,recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewSearch);
+        AdapterListVerticalStories adapter = setRecyclerViewShowVertical(dataList, recyclerView);
 //
         iConClick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,12 +72,13 @@ public class SearchScreenActivity extends AppCompatActivity {
 
 
     }
-    private void LoadMoreStories (AdapterListVerticalStories adapter) {
-        MainServices.storyService.getAllStories(page,limit, inputSearch.getText().toString()).enqueue(new Callback<ArrayList<StoryInfo>>() {
+
+    private void LoadMoreStories(AdapterListVerticalStories adapter) {
+        MainServices.storyService.getAllStories(page, limit, inputSearch.getText().toString()).enqueue(new Callback<ArrayList<StoryInfo>>() {
             @Override
             public void onResponse(Call<ArrayList<StoryInfo>> call, Response<ArrayList<StoryInfo>> response) {
 
-                dataList.addAll(response.body()) ;
+                dataList.addAll(response.body());
                 adapter.notifyDataSetChanged();
                 page++;
 
@@ -85,16 +87,16 @@ public class SearchScreenActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<StoryInfo>> call, Throwable t) {
                 System.out.println(t.toString());
-System.out.println("heh");
             }
         });
     }
-    private AdapterListVerticalStories setRecyclerViewShowVertical (ArrayList<StoryInfo> data, RecyclerView recyclerViewTop) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchScreenActivity.this,LinearLayoutManager.VERTICAL, false);
+
+    private AdapterListVerticalStories setRecyclerViewShowVertical(ArrayList<StoryInfo> data, RecyclerView recyclerViewTop) {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchScreenActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerViewTop.setLayoutManager(linearLayoutManager);
 
         AdapterListVerticalStories adapter = new AdapterListVerticalStories
-                (data,SearchScreenActivity.this);
+                (data, SearchScreenActivity.this);
         recyclerViewTop.setAdapter(adapter);
         return adapter;
     }

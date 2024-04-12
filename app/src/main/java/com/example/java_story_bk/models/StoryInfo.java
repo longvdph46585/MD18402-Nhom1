@@ -8,6 +8,15 @@ import java.io.Serializable;
 
 public class StoryInfo implements Serializable {
     private String _id;
+    private  int count_read;
+
+    public void setCount_read(int count_read) {
+        this.count_read = count_read;
+    }
+
+    public int getCount_read() {
+        return count_read;
+    }
 
     public void set_id(String _id) {
         this._id = _id;
@@ -113,7 +122,7 @@ public class StoryInfo implements Serializable {
         return count_stars;
     }
 
-    private StoryInfo(String _id, String create_at, String updated_at, int count_chapters, String story_name, String story_picture, String auhtor_name, String story_quick_review, String story_genre, int completed_status, int linh_thach, int count_followers_story, float count_stars) {
+    private StoryInfo(String _id, String create_at, String updated_at, int count_chapters, String story_name, String story_picture, String auhtor_name, String story_quick_review, String story_genre, int completed_status, int linh_thach, int count_followers_story, float count_stars, int count_read) {
         this._id = _id;
         this.create_at = create_at;
         this.updated_at = updated_at;
@@ -127,6 +136,7 @@ public class StoryInfo implements Serializable {
         this.linh_thach = linh_thach;
         this.count_followers_story = count_followers_story;
         this.count_stars = count_stars;
+        this.count_read = count_read;
     }
 
     private String create_at;

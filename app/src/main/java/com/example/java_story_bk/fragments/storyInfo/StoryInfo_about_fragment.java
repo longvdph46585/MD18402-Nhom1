@@ -13,14 +13,21 @@ import android.widget.Toast;
 
 import com.example.java_story_bk.R;
 import com.example.java_story_bk.models.StoryInfo;
+import com.example.java_story_bk.services.MainServices;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class StoryInfo_about_fragment extends Fragment {
     private StoryInfo storyInfo;
-    public StoryInfo_about_fragment (StoryInfo storyInfo ) {
-        this.storyInfo= storyInfo;
+
+    public StoryInfo_about_fragment(StoryInfo storyInfo) {
+        this.storyInfo = storyInfo;
 
     }
+
     TextView storyInfo_about_countFollowers, storyInfo_about_countChapters, storyInfo_about_countViews, storyInfo_about_quickReview;
 
     @Override
@@ -33,18 +40,20 @@ public class StoryInfo_about_fragment extends Fragment {
         storyInfo_about_countChapters = view.findViewById(R.id.storyInfo_about_countChapters);
         storyInfo_about_countViews = view.findViewById(R.id.storyInfo_about_countViews);
         storyInfo_about_quickReview = view.findViewById(R.id.storyInfo_about_quickReview);
-        initFistSee();
+        updateText();
         return view;
     }
-    private  void initFistSee () {
 
-            System.out.println(storyInfo.getStory_name());
 
-            storyInfo_about_countFollowers.setText(storyInfo.getCount_followers_story() + "");
-            storyInfo_about_countChapters.setText(storyInfo.getCount_chapters() + "");
 
-            storyInfo_about_quickReview.setText(storyInfo.getStory_quick_review() + "");
+    private void updateText() {
 
-            // Sử dụng dữ liệu nhận được ở đây
+
+        storyInfo_about_countFollowers.setText(storyInfo.getCount_followers_story() + "");
+        storyInfo_about_countChapters.setText(storyInfo.getCount_chapters() + "");
+        storyInfo_about_countViews.setText(storyInfo.getCount_read() + "");
+        storyInfo_about_quickReview.setText(storyInfo.getStory_quick_review() + "");
+
+        // Sử dụng dữ liệu nhận được ở đây
     }
 }

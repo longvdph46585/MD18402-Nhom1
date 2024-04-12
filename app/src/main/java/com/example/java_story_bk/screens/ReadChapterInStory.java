@@ -114,7 +114,6 @@ public class ReadChapterInStory extends AppCompatActivity {
 
     private void handleUpdateChapter(ChapterInfo chapterInfo) {
         // update On database
-        System.out.println("update");
         readingService.addReadingInfoForUser(this,storyInfo,chapterInfo.get_id());
 
 

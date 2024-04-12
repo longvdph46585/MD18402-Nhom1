@@ -5,12 +5,43 @@
     android:layout_height="match_parent"
     tools:context=".fragments.storyInfo.StoryInfo_chapters_fragment">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/recyclerViewChapter"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/wrap_read_current_fragment_storyInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/readContinueChapterFragmentLabel"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Đang đọc tại Chương:"></TextView>
+
+            <TextView
+                android:id="@+id/readContinueChapterFragment"
+                android:layout_marginLeft="15dp"
+                android:textSize="17dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""></TextView>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewChapter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/wrap_read_current_fragment_storyInfo" />
+    </RelativeLayout>
 
 
 </FrameLayout>
