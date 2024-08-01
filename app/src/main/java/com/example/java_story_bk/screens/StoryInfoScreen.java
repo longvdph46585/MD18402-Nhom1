@@ -141,6 +141,7 @@ public class StoryInfoScreen extends AppCompatActivity {
 
     private void handleGetInfoFollowed(boolean isOffChangeIcon ) {
         if (accountService.checkLoginAccount()) {
+            System.out.println("ádfasfasdfasdf");
             MainServices.storyService.getFollowedStoryInfo(accountService.getAccountID(), storyInfo.get_id()).enqueue(new Callback<UserFollowedStory>() {
                 @Override
                 public void onResponse(Call<UserFollowedStory> call, Response<UserFollowedStory> response) {
@@ -235,6 +236,7 @@ public class StoryInfoScreen extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             boolean isAdd = userFollowedStory == null;
+                            System.out.println("ádfasfasdfasdf222");
 
                             handleGetInfoFollowed(true);
                                 changeIconToClose(isAdd);

@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/wrapLoveStoriesFragment_login_mean"
             android:layout_marginTop="20dp"
+            android:id="@+id/wrapLoveStoriesFragment_login_mean_btn"
+
             android:foregroundGravity="center"
             android:layout_centerHorizontal="true"
             android:text="Đăng nhập ngay">

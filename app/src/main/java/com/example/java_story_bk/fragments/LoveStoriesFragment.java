@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.example.java_story_bk.R;
@@ -51,7 +52,12 @@ public class LoveStoriesFragment extends Fragment {
         Log.e("fragment", "LoveStoriesFragment reolad");
         listData.clear();
         adapter.notifyDataSetChanged();
+        if(accountService.checkLoginAccount()) {
+            wrapLoveStoriesFragment_login.setVisibility(View.INVISIBLE);
+            recyclerview.setVisibility(View.VISIBLE);
+            getData();
 
+        }
     }
     private  void getData() {
         System.out.println(accountService.getAccountID() + " fsdafsadfsadf" );
@@ -75,6 +81,13 @@ public class LoveStoriesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_love_stories, container, false);
         wrapLoveStoriesFragment_login = view.findViewById(R.id.wrapLoveStoriesFragment_login);
         recyclerview = view.findViewById(R.id.listItemLove);
+        final Button btn= wrapLoveStoriesFragment_login.findViewById(R.id.wrapLoveStoriesFragment_login_mean_btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         readingService = new ReadingService(getContext());
         adapter = setRecyclerViewShowVertical(listData,recyclerview,getContext());
         callBackDoneGetStories = new ReadingService.callBackGetFollowedStories() {
@@ -87,12 +100,12 @@ public class LoveStoriesFragment extends Fragment {
             }
         };
 
-        if(accountService.checkLoginAccount()) {
-            wrapLoveStoriesFragment_login.setVisibility(View.INVISIBLE);
-            recyclerview.setVisibility(View.VISIBLE);
-            getData();
-
-        }
+//        if(accountService.checkLoginAccount()) {
+//            wrapLoveStoriesFragment_login.setVisibility(View.INVISIBLE);
+//            recyclerview.setVisibility(View.VISIBLE);
+//            getData();
+//
+//        }
 
 
     return  view;
