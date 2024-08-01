@@ -78,6 +78,8 @@ public class ReadingService {
         call.enqueue(new Callback<ArrayList<StoryInfoWithIdChapterUpdate>>() {
             @Override
             public void onResponse(Call<ArrayList<StoryInfoWithIdChapterUpdate>> call, Response<ArrayList<StoryInfoWithIdChapterUpdate>> response) {
+
+        System.out.println("fsdafsadfsadf");
                 listData.addAll(response.body());
                 callback.onComplete(listData);
 

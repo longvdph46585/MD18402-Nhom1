@@ -51,9 +51,10 @@ public class LoveStoriesFragment extends Fragment {
         Log.e("fragment", "LoveStoriesFragment reolad");
         listData.clear();
         adapter.notifyDataSetChanged();
-        getData();
+
     }
     private  void getData() {
+        System.out.println(accountService.getAccountID() + " fsdafsadfsadf" );
         readingService.getFollowedStories(accountService.getAccountID(),page, limit,callBackDoneGetStories);
 
     }
@@ -89,7 +90,10 @@ public class LoveStoriesFragment extends Fragment {
         if(accountService.checkLoginAccount()) {
             wrapLoveStoriesFragment_login.setVisibility(View.INVISIBLE);
             recyclerview.setVisibility(View.VISIBLE);
+            getData();
+
         }
+
 
     return  view;
     }
