@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".fragments.DashboardFragment">
+<RelativeLayout
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+        <ImageView
+            android:id="@+id/search_ic_header_dashboard"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+        </ImageView>
+    </RelativeLayout>
+    <ScrollView
+        android:paddingBottom="40dp"
+        android:layout_below="@+id/headerLayout"
+    android:id="@+id/scrollViewDashboard"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+
+    android:layout_height="match_parent">
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Truyện HOT trong tuần"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_topStoriesOfWeek"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Truyện có nhiều lượt theo dõi"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_topStoriesOfFollow"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Truyện được ủng hộ nhiều "
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_topStoriesOfDonate"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh sách truyện"
+
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_list_stories_el"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
+
+
+</FrameLayout>
