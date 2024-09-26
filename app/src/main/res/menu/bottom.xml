@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/account"
+android:icon="@drawable/account"
+    android:title="account"/>
+    <item android:id="@+id/dashboard"
+        android:icon="@drawable/dashboard"
+        android:title="dashboard"/>
+    <item android:id="@+id/history"
+        android:icon="@drawable/history"
+        android:title="history"/>
+    <item android:id="@+id/loveStories"
+        android:icon="@drawable/gratitude"
+        android:title="loveStories"/>
+    <item android:id="@+id/ratingBar"
+        android:icon="@drawable/review"
+        android:title="RatingBar"/>
+</menu>
