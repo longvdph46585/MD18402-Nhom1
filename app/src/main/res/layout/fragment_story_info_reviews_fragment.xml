@@ -6,9 +6,33 @@
     tools:context=".fragments.storyInfo.StoryInfo_reviews_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="fragment_story_info_reviews_fragment" />
+        android:orientation="vertical"
+        android:weightSum="10">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_weight="9"
+        android:layout_height="0dp"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_weight="1"
+       android:layout_height="0dp">
+    <RatingBar
+        android:id="@+id/ratingBarShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="Ok"/>
+   </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

@@ -34,7 +34,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
 BottomNavigationView navigationView;
 Fragment fragment;
     @Override
@@ -60,9 +59,6 @@ Fragment fragment;
                 get(fragment);
             }if(v.getItemId()==R.id.loveStories){
                 fragment=new LoveStoriesFragment();
-                get(fragment);
-            }if(v.getItemId()==R.id.ratingBar){
-                fragment=new RatingBarShow();
                 get(fragment);
             }
             return true;

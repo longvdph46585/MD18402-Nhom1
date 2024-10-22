@@ -12,7 +12,4 @@ android:icon="@drawable/account"
     <item android:id="@+id/loveStories"
         android:icon="@drawable/gratitude"
         android:title="loveStories"/>
-    <item android:id="@+id/ratingBar"
-        android:icon="@drawable/review"
-        android:title="RatingBar"/>
 </menu>
