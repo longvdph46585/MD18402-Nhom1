@@ -9,30 +9,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
+        android:weightSum="10"
+        android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_weight="9"
-        android:layout_height="0dp"/>
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_weight="1"
-       android:layout_height="0dp">
-    <RatingBar
-        android:id="@+id/ratingBarShow"
-        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/recyrate"
+        android:layout_weight="9"/>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
+        android:weightSum="10"
+        android:layout_gravity="bottom">
+   <EditText
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:layout_weight="7"
+       android:hint="Nhập điểm"
+       android:id="@+id/edrv"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:text="Ok"/>
-   </LinearLayout>
+        android:text="Ok"
+        android:layout_weight="3"
+        android:id="@+id/btrv"/>
+    </LinearLayout>
     </LinearLayout>
 </FrameLayout>
